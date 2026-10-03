@@ -1,0 +1,31 @@
+# Maven
+target/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Cursor
+.cursor/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Reports
+allure-results/
+allure-report/
+test-output/
+
+# Environment / secrets
+.env
+*.env
+secrets.properties
+
+# Temporary
+tmp/
+temp/
