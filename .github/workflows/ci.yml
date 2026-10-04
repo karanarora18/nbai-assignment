@@ -6,7 +6,9 @@ on:
 
 permissions:
   contents: read
-
+env:
+  RESTFUL_BOOKER_USERNAME: ${{ secrets.RESTFUL_BOOKER_USERNAME }}
+  RESTFUL_BOOKER_PASSWORD: ${{ secrets.RESTFUL_BOOKER_PASSWORD }}
 jobs:
   api-tests:
     runs-on: ubuntu-latest
