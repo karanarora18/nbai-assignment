@@ -6,20 +6,29 @@ target/
 .idea/
 *.iml
 .vscode/
+.classpath
+.project
+.settings/
+*.swp
 
 # Cursor
 .cursor/
 
 # OS
 .DS_Store
+Thumbs.db
 
 # Logs
 *.log
 
-# Reports
+# Reports and screenshots (also covered by target/)
 allure-results/
 allure-report/
 test-output/
+screenshots/
+
+# App binaries
+*.apk
 
 # Environment / secrets
 .env

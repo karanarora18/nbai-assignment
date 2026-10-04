@@ -18,6 +18,8 @@
         <testng.version>7.12.0</testng.version>
         <jackson.version>2.22.3</jackson.version>
         <surefire.version>3.6.0</surefire.version>
+        <appium.java-client.version>10.0.0</appium.java-client.version>
+        <allure.version>2.29.1</allure.version>
     </properties>
 
     <dependencies>
@@ -37,6 +39,23 @@
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>${appium.java-client.version}</version>
+        </dependency>
+        <!-- Allure: commons gives the annotations and Allure.addAttachment; testng registers the results listener. -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-commons</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -45,7 +64,45 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
+                <configuration>
+                    <!-- Mobile tests need Appium + an Android device, so plain `mvn test` skips them. -->
+                    <excludes>
+                        <exclude>**/mobile/MobileSmokeTest.java</exclude>
+                        <exclude>**/mobile/LoginTest.java</exclude>
+                        <exclude>**/mobile/ProductTest.java</exclude>
+                        <exclude>**/mobile/CartTest.java</exclude>
+                        <exclude>**/mobile/CheckoutTest.java</exclude>
+                    </excludes>
+                    <systemPropertyVariables>
+                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+                    </systemPropertyVariables>
+                </configuration>
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- mvn test -Pmobile : run only the mobile tests. -->
+        <profile>
+            <id>mobile</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <excludes combine.self="override"/>
+                            <includes>
+                                <include>**/MobileSmokeTest.java</include>
+                                <include>**/LoginTest.java</include>
+                                <include>**/ProductTest.java</include>
+                                <include>**/CartTest.java</include>
+                                <include>**/CheckoutTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

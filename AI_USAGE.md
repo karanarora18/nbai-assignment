@@ -41,3 +41,7 @@ The final mobile automation suite remains Java/TestNG/Appium based.
 
 Architecture, design decisions, framework structure, assertions, test coverage,
 and final implementation remain subject to human review.
+
+## Reporting
+
+Allure reporting was implemented with AI assistance and reviewed and validated manually.

@@ -7,11 +7,15 @@ import static org.testng.Assert.assertTrue;
 import com.nbai.assignment.api.model.Booking;
 import com.nbai.assignment.api.model.BookingDates;
 import com.nbai.assignment.config.ConfigManager;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
 /** Calls the real Restful Booker service. Each test creates the data it needs. */
+@Epic("Restful Booker API")
+@Feature("Get booking")
 public class GetBookingTest {
 
     private final BookingClient client = new BookingClient();

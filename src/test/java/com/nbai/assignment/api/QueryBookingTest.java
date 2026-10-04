@@ -7,6 +7,8 @@ import static org.testng.Assert.assertTrue;
 import com.nbai.assignment.api.model.Booking;
 import com.nbai.assignment.api.model.BookingDates;
 import com.nbai.assignment.config.ConfigManager;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +20,8 @@ import org.testng.annotations.Test;
  * The sandbox is shared, so every test creates a booking with a unique firstname/lastname and scopes its query
  * to that name; results then cannot be affected by anyone else's data.
  */
+@Epic("Restful Booker API")
+@Feature("Query bookings")
 public class QueryBookingTest {
 
     // The booking created by each test: 2026-07-01 to 2026-07-05.

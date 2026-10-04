@@ -19,6 +19,7 @@ public final class RequestSpecFactory {
     static RequestSpecification create(String baseUri) {
         return new RequestSpecBuilder()
                 .setBaseUri(baseUri)
+                .addFilter(new AllureApiFilter())
                 .build();
     }
 }

@@ -7,6 +7,8 @@ import static org.testng.Assert.assertNull;
 import com.nbai.assignment.api.model.Booking;
 import com.nbai.assignment.api.model.BookingDates;
 import com.nbai.assignment.config.ConfigManager;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -14,6 +16,8 @@ import org.testng.annotations.Test;
  * Negative and adversarial cases against the real Restful Booker service.
  * Each test creates the data it needs and checks both the rejection and that stored data was not changed.
  */
+@Epic("Restful Booker API")
+@Feature("Negative scenarios")
 public class NegativeBookingTest {
 
     /** Deliberately wrong values, not real credentials. */

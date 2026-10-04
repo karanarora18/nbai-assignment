@@ -5,6 +5,8 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertNotNull;
 
 import com.nbai.assignment.config.ConfigManager;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.restassured.response.Response;
 import org.testng.annotations.Test;
 
@@ -12,6 +14,8 @@ import org.testng.annotations.Test;
  * Calls the real Restful Booker service.
  * Credentials come from RESTFUL_BOOKER_USERNAME / RESTFUL_BOOKER_PASSWORD; the test fails clearly if they are not set.
  */
+@Epic("Restful Booker API")
+@Feature("Authentication")
 public class AuthenticationTest {
 
     private final BookingClient client = new BookingClient();
