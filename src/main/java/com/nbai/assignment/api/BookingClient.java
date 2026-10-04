@@ -89,6 +89,8 @@ public class BookingClient {
         return given()
                 .spec(spec)
                 .contentType(ContentType.JSON)
-                .accept(ContentType.JSON);
+                // Plain string on purpose: accept(ContentType.JSON) makes REST Assured send a multi-value list,
+                // which Restful Booker answers with HTTP 418.
+                .header("Accept", "application/json");
     }
 }
